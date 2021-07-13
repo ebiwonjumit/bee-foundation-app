@@ -32,6 +32,8 @@ class _MyHomePageState extends State<MyHomePage> {
   int currentIndex  = 0;
   final List<Widget> _children =[
     HomePageScreen(),
+    ProfileScreen(),
+    ProfileScreen(),
     ProfileScreen()
   ];
   @override
@@ -44,12 +46,15 @@ class _MyHomePageState extends State<MyHomePage> {
       body: _children[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped,
-        backgroundColor: Colors.yellow,
-        selectedItemColor: Colors.black,
+        backgroundColor: Colors.white,
+        unselectedItemColor:  Colors.grey,
+        selectedItemColor: Color(0xFF8A817C),
         currentIndex: currentIndex,
         items: [
-          BottomNavigationBarItem(icon: new Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: new Icon(Icons.person), label: "Person")
+          BottomNavigationBarItem(icon: new ImageIcon(AssetImage("images/daily_feed_menu_ic.png"),), label: "Daily Feed"),
+          BottomNavigationBarItem(icon: new ImageIcon(AssetImage("images/resources_menu_ic.png"),), label: "Resources"),
+          BottomNavigationBarItem(icon: new ImageIcon(AssetImage("images/profile_menu_ic.png"),), label: "Profile"),
+          BottomNavigationBarItem(icon: new ImageIcon(AssetImage("images/more_menu_ic.png"),), label: "More")
         ],
       ),
     );
