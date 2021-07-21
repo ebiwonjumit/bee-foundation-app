@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'HomePageScreen.dart';
 import 'ProfileScreen.dart';
-import 'TabItem.dart';
+import 'BottomTabItem.dart';
 
 class BottomNavigation extends StatefulWidget {
   BottomNavigation({Key? key, required this.title}) : super(key: key);
@@ -16,7 +17,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   final List<Widget> _children = [
     HomePageScreen(),
     ProfileScreen(),
-    ProfileScreen(),
+    HomePageScreen(),
     ProfileScreen()
   ];
 
@@ -30,7 +31,11 @@ class _BottomNavigationState extends State<BottomNavigation> {
       ),
       body: _children[currentIndex],
       floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            setState(() {
+              print("Made it");
+            });
+          },
           backgroundColor: Color(0xFFFFCD07),
           foregroundColor: Colors.white,
           child: ImageIcon(AssetImage("images/bee_icon.png",))),
@@ -39,47 +44,49 @@ class _BottomNavigationState extends State<BottomNavigation> {
     );
   }
 
-  void onTabTapped(int index) {
-    setState(() {
-      currentIndex = index;
-    });
-  }
-
   _buildBottomFabBar() {
     return BottomAppBar(
         color: Colors.white,
         shape: CircularNotchedRectangle(),
         child: Row(
           children: <Widget>[
-            TabItem(
+            BottomTabItem(
                 icon: AssetImage("images/daily_feed_menu_ic.png"),
                 text: "Daily Feed",
                 isSelected: currentIndex == 0,
                 onTap: () {
-                  onTabTapped(currentIndex);
+                  setState(() {
+                  currentIndex = 0;
+                  });
                 }),
-            TabItem(
+            BottomTabItem(
                 icon: AssetImage("images/resources_menu_ic.png"),
                 text: "Resources",
                 isSelected: currentIndex == 1,
                 onTap: () {
-                  onTabTapped(currentIndex);
+                  setState(() {
+                  currentIndex = 1;
+                  });
                 }),
             SizedBox(width: 48),
-            TabItem(
+            BottomTabItem(
               icon: AssetImage("images/profile_menu_ic.png"),
               text: "Profile",
               isSelected: currentIndex == 2,
               onTap: () {
-                onTabTapped(currentIndex);
+                setState(() {
+                currentIndex = 2;
+                });
               },
             ),
-            TabItem(
+            BottomTabItem(
               icon: AssetImage("images/more_menu_ic.png"),
               text: "More",
               isSelected: currentIndex == 3,
               onTap: () {
-                onTabTapped(currentIndex);
+                setState(() {
+                currentIndex = 3;
+                });
               },
             )
           ],

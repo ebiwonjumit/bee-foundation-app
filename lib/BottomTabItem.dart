@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class TabItem extends StatelessWidget {
+class BottomTabItem extends StatelessWidget {
   final String text;
   final AssetImage icon;
   final bool isSelected;
-  final Function? onTap;
+  final VoidCallback onTap;
 
-  const TabItem(
+  const BottomTabItem(
       {Key? key,
       required this.icon,
       required this.text,
@@ -38,4 +38,7 @@ class TabItem extends StatelessWidget {
       onTap: onTap,
     );
   }
+
 }
+
+
