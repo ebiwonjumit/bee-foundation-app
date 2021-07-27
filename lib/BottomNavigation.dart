@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
-import 'HomePageScreen.dart';
-import 'ProfileScreen.dart';
-import 'BottomTabItem.dart';
+import 'Screens/DailyFeedScreen.dart';
+import 'Screens/MoreScreen.dart';
+import 'Screens/ResourceScreen.dart';
+import 'Screens/ProfileScreen.dart';
+import 'Widgets/BottomTabItem.dart';
 
 class BottomNavigation extends StatefulWidget {
   BottomNavigation({Key? key, required this.title}) : super(key: key);
@@ -15,33 +17,34 @@ class BottomNavigation extends StatefulWidget {
 class _BottomNavigationState extends State<BottomNavigation> {
   int currentIndex = 0;
   final List<Widget> _children = [
-    HomePageScreen(),
+    DailyFeedScreen(),
+    ResourceScreen(),
     ProfileScreen(),
-    HomePageScreen(),
-    ProfileScreen()
+    MoreScreen()
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xFFFFCD07),
-        title: Text(widget.title),
-        centerTitle: true,
-      ),
-      body: _children[currentIndex],
-      floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            setState(() {
-              print("Made it");
-            });
-          },
-          backgroundColor: Color(0xFFFFCD07),
-          foregroundColor: Colors.white,
-          child: ImageIcon(AssetImage("images/bee_icon.png",))),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: _buildBottomFabBar()
-    );
+        body: _children[currentIndex],
+        floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              setState(() {
+                print("Made it");
+              });
+            },
+            backgroundColor: Color(0xFFFFCD07),
+            foregroundColor: Colors.white,  
+            child: Align(
+                widthFactor: 1,
+                child: ImageIcon(
+                  AssetImage(
+                    "images/bee_icon.png",
+                  ),
+                  size: 32,
+                ))),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        bottomNavigationBar: _buildBottomFabBar());
   }
 
   _buildBottomFabBar() {
@@ -56,7 +59,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 isSelected: currentIndex == 0,
                 onTap: () {
                   setState(() {
-                  currentIndex = 0;
+                    currentIndex = 0;
                   });
                 }),
             BottomTabItem(
@@ -65,7 +68,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 isSelected: currentIndex == 1,
                 onTap: () {
                   setState(() {
-                  currentIndex = 1;
+                    currentIndex = 1;
                   });
                 }),
             SizedBox(width: 48),
@@ -75,7 +78,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
               isSelected: currentIndex == 2,
               onTap: () {
                 setState(() {
-                currentIndex = 2;
+                  currentIndex = 2;
                 });
               },
             ),
@@ -85,7 +88,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
               isSelected: currentIndex == 3,
               onTap: () {
                 setState(() {
-                currentIndex = 3;
+                  currentIndex = 3;
                 });
               },
             )
