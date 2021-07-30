@@ -38,28 +38,38 @@ class YourInfoScreenState extends State<YourInfoScreen> {
                     fontFamily: "Roboto",
                     color: Color(0xFF1E1E1E)),
               )),
-          Container(
-            width: 370,
-            height: 100,
-            child:
-          Card(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(top: 5, bottom: 5),
-                  child: Text(
-                    "Here is a daily prompt that people can \n answer in their journal.",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+          InkWell(
+            child: Ink(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+              ),
+                  width: 370,
+                  padding: EdgeInsets.fromLTRB(12.0, 5.0, 10.0, 0.0),
+                  height: 120,
+                  child: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.only(top: 10, bottom: 5),
+                          child: Text(
+                            "Here is a daily prompt that people can \n answer in their journal.",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 15.0,
+                        ),
+                        Padding(
+                            padding: EdgeInsets.only(top: 10),
+                            child: Text("Start typing here..."))
+                      ],
+                    ),
                   ),
                 ),
-                Padding(
-                    padding: EdgeInsets.only(top: 5),
-                    child: Text("Start typing here..."))
-              ],
-            ),
-          ))
+            onTap: () {},
+          )
         ],
       ),
     );
