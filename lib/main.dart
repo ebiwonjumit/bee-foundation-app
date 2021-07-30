@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'Bee Foundation',
       theme: ThemeData(
         primarySwatch: Colors.yellow,
+        fontFamily: "Roboto",
       ),
       home: BottomNavigation(title: 'Bee Foundation'),
     );

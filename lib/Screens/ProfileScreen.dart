@@ -1,3 +1,4 @@
+import 'package:bee_foundation_app/Screens/YourInfoScreen.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -27,7 +28,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                 ),
               )),
           body: TabBarView(
-            children: <Widget>[Text("Your info"), Text("Savd Resource")],
+            children: <Widget>[YourInfoScreen(), Text("Savd Resource")],
           ),
         ));
   }
