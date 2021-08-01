@@ -24,12 +24,12 @@ class BottomTabItem extends StatelessWidget {
         children: <Widget>[
           ImageIcon(
             icon,
-            color: isSelected ? Colors.grey : Color(0xFF8A817C),
+            color: isSelected ? Color(0xFF8A817C) : Color(0xFFC2C2C2),
           ),
           Text(
             text,
             style: TextStyle(
-              color: isSelected ? Colors.grey : Color(0xFF8A817C),
+              color: isSelected ? Color(0xFF8A817C) : Color(0xFFC2C2C2),
             ),
           )
         ],

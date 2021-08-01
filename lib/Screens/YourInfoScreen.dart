@@ -38,11 +38,13 @@ class YourInfoScreenState extends State<YourInfoScreen> {
                     fontFamily: "Roboto",
                     color: Color(0xFF1E1E1E)),
               )),
-          InkWell(
-            child: Ink(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-              ),
+          Material(
+              elevation: 2,
+              child: InkWell(
+                child: Ink(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
                   width: 370,
                   padding: EdgeInsets.fromLTRB(12.0, 5.0, 10.0, 0.0),
                   height: 120,
@@ -68,8 +70,8 @@ class YourInfoScreenState extends State<YourInfoScreen> {
                     ),
                   ),
                 ),
-            onTap: () {},
-          )
+                onTap: () {},
+              ))
         ],
       ),
     );
