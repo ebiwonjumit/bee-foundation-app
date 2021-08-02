@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class SocialScreenItem extends StatelessWidget {
   final String text;
+  final Function onTap;
 
-  const SocialScreenItem({Key? key, required this.text}) : super(key: key);
+  const SocialScreenItem({Key? key, required this.text, required this.onTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,6 +14,7 @@ class SocialScreenItem extends StatelessWidget {
         child: ListTile(
           leading: ImageIcon(
             AssetImage(images(text)),
+            color: Colors.black,
           ),
           title: Text(
             text,
@@ -21,11 +23,13 @@ class SocialScreenItem extends StatelessWidget {
           trailing: Text(
             username(text),
             softWrap: true,
-            style: TextStyle(fontSize: 7, color: Colors.grey),
+            style: TextStyle(fontSize: 15, color: Colors.grey),
           ),
         ),
       ),
-      onTap: () {},
+      onTap: () {
+        onTap;
+      },
     );
   }
 

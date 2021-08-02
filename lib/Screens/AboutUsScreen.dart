@@ -22,7 +22,7 @@ class AboutUsScreen extends StatelessWidget {
               alignment: Alignment.topLeft,
               child:Text(
               "Who We Are",
-              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 17),
+              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 25),
             ),
           )),
           Padding(
@@ -39,7 +39,7 @@ class AboutUsScreen extends StatelessWidget {
                 alignment: Alignment.topLeft,
                 child:Text(
                   "Our Mission",
-                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 17),
+                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 25),
                 ),
               )),
           Padding(

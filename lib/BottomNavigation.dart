@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 import 'Screens/DailyFeedScreen.dart';
 import 'Screens/MoreScreen.dart';
 import 'Screens/ResourceScreen.dart';
@@ -50,6 +49,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
         color: Colors.white,
         shape: CircularNotchedRectangle(),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             BottomTabItem(
                 icon: AssetImage("images/daily_feed_menu_ic.png"),
@@ -60,7 +60,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
                     currentIndex = 0;
                   });
                 }),
-            BottomTabItem(
+            Padding(
+              padding: EdgeInsets.only(right: 40.0),
+            child: BottomTabItem(
                 icon: AssetImage("images/resources_menu_ic.png"),
                 text: "Resources",
                 isSelected: currentIndex == 1,
@@ -68,8 +70,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                   setState(() {
                     currentIndex = 1;
                   });
-                }),
-            SizedBox(width: 48),
+                })),
             BottomTabItem(
               icon: AssetImage("images/profile_menu_ic.png"),
               text: "Profile",

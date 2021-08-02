@@ -1,4 +1,5 @@
 import 'package:bee_foundation_app/Screens/FeaturedResourceScreen.dart';
+import 'package:bee_foundation_app/Screens/ShareYourStoryScreen.dart';
 import 'package:flutter/material.dart';
 
 class ResourceScreen extends StatefulWidget{
@@ -30,7 +31,7 @@ class ResourceScreenState extends State<ResourceScreen> {
                 ),
               )),
           body: TabBarView(
-            children: <Widget>[FeaturedResourceScreen(), Text("Share story")],
+            children: <Widget>[FeaturedResourceScreen(), ShareYourStoryScreen()],
           ),
         ));
   }

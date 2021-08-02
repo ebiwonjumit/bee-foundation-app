@@ -2,6 +2,7 @@ import 'package:bee_foundation_app/Screens/AboutUsScreen.dart';
 import 'package:flutter/material.dart';
 import 'BottomNavigation.dart';
 import 'Screens/SocialScreen.dart';
+import 'Screens/WebScreen.dart';
 
 void main() {
   runApp(MyApp());
