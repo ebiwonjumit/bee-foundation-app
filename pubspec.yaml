@@ -14,7 +14,7 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
-  carousel_slider: ^4.0.0
+  webview_flutter: ^2.0.10
 
 dev_dependencies:
   flutter_test:
@@ -54,6 +54,9 @@ flutter:
      - images/bee_icon.png
      - images/test_profile.jpg
      - images/stats.png
+     - images/facebook.png
+     - images/instagram.png
+     - images/twitter.png
 
 
   fonts:

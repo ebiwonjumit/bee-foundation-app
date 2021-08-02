@@ -7,8 +7,6 @@ import 'Screens/ProfileScreen.dart';
 import 'Widgets/BottomTabItem.dart';
 
 class BottomNavigation extends StatefulWidget {
-  BottomNavigation({Key? key, required this.title}) : super(key: key);
-  final String title;
 
   @override
   _BottomNavigationState createState() => _BottomNavigationState();

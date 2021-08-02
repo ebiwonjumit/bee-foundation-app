@@ -1,5 +1,7 @@
+import 'package:bee_foundation_app/Screens/AboutUsScreen.dart';
 import 'package:flutter/material.dart';
 import 'BottomNavigation.dart';
+import 'Screens/SocialScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +17,12 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.yellow,
         fontFamily: "Roboto",
       ),
-      home: BottomNavigation(title: 'Bee Foundation'),
+      routes: {
+        '/': (context) => BottomNavigation(),
+        'AboutUs': (context) => AboutUsScreen(),
+        'Social': (context) => SocialScreen()
+      },
+      initialRoute: '/',
     );
   }
 }
