@@ -112,6 +112,27 @@ class DailyFeedScreenState extends State<DailyFeedScreen> {
                               ))),
                     ),
                     onTap: () {},
+                  ),
+                  InkWell(
+                    child: Container(
+                      margin: EdgeInsets.all(6),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: Colors.orange),
+                      width: 350,
+                      height: 125,
+                      child: Align(
+                          alignment: Alignment.bottomLeft,
+                          child: Padding(
+                              padding: EdgeInsets.all(8),
+                              child: Text(
+                                "Event 3",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ))),
+                    ),
+                    onTap: () {},
                   )
                 ],
               ))),

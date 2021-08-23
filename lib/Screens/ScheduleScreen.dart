@@ -9,7 +9,7 @@ class ScheduleScreen extends StatefulWidget {
 
 class ScheduleScreenState extends State<ScheduleScreen> {
   final items = List<GrandItem>.generate(
-      50,
+      12,
       (i) => i % 3 == 0
           ? MonthItem("JAN")
           : DateItem("22", "Team Kenny Bryden Golf Tournament",
@@ -28,12 +28,9 @@ class ScheduleScreenState extends State<ScheduleScreen> {
       ),
       body: ListView.separated(
         shrinkWrap: true,
-        padding: EdgeInsets.all(10),
-        itemCount: items.length + 2,
+        padding: EdgeInsets.only(top: 25, bottom: 25),
+        itemCount: items.length,
         itemBuilder: (BuildContext context, int index) {
-          if (index == 0 || index == items.length + 1) {
-            return Container();
-          }
           final item = items[index];
           return Container(
             child: item.buildItem(context),
@@ -61,9 +58,9 @@ class MonthItem implements GrandItem {
     return Align(
         alignment: Alignment.topLeft,
         child: Container(
-          padding: EdgeInsets.only(top: 12, bottom: 5, left: 23),
+          padding: EdgeInsets.only(top: 10, bottom: 5, left: 24),
           width: 80,
-          height: 38,
+          height: 35,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.horizontal(right: Radius.circular(50)),
               color: Colors.black),
@@ -87,7 +84,7 @@ class DateItem implements GrandItem {
   Widget buildItem(BuildContext context) {
     return InkWell(
       child: Padding(
-          padding: const EdgeInsets.only(left: 2, right: 2),
+          padding: const EdgeInsets.only(left: 10, right: 2, top: 5, bottom: 5),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -111,13 +108,15 @@ class DateItem implements GrandItem {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                    Center(
+                  child:
                     Text(
                       titleText,
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
                       ),
                       softWrap: true,
-                    ),
+                    )),
                     Text(
                       subtitleText,
                       style: TextStyle(fontSize: 12),

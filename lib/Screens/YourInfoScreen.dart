@@ -9,7 +9,7 @@ class YourInfoScreen extends StatefulWidget {
 class YourInfoScreenState extends State<YourInfoScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -71,7 +71,9 @@ class YourInfoScreenState extends State<YourInfoScreen> {
                     ),
                   ),
                 ),
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, 'Journal Entry');
+                },
               )),
           Container(
             padding: EdgeInsets.only(top:15, left: 15),
@@ -85,9 +87,9 @@ class YourInfoScreenState extends State<YourInfoScreen> {
           ListView.separated(
             shrinkWrap: true,
             padding: EdgeInsets.all(10),
-            itemCount: 5,
+            itemCount: 7,
             itemBuilder: (BuildContext context, int index) {
-              if(index == 0 || index == 4){
+              if(index == 0 || index == 5){
                 return Container();
               }
               return YellowListItem(iconText: "08", subtitleText: "Here is some intro text of the respect.", titleText: "Here is the title of the daily prompt from this day.", onTap:(){});
