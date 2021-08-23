@@ -26,7 +26,7 @@ dev_dependencies:
 flutter_icons:
     android: false
     ios: true
-    image_path_ios: "images/launcher/ios.png"
+    image_path_ios: "images/launcher/ios.jpg"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

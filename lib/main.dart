@@ -1,4 +1,5 @@
 import 'package:bee_foundation_app/Screens/AboutUsScreen.dart';
+import 'package:bee_foundation_app/Screens/ScheduleScreen.dart';
 import 'package:flutter/material.dart';
 import 'BottomNavigation.dart';
 import 'Screens/SocialScreen.dart';
@@ -14,6 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Bee Foundation',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.yellow,
         fontFamily: "Roboto",
@@ -21,7 +23,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => BottomNavigation(),
         'AboutUs': (context) => AboutUsScreen(),
-        'Social': (context) => SocialScreen()
+        'Social': (context) => SocialScreen(),
+        'Schedule': (context) => ScheduleScreen()
       },
       initialRoute: '/',
     );

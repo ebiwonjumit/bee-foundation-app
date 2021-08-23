@@ -31,7 +31,9 @@ class MoreScreenState extends State<MoreScreen> {
           }),
         );
       },
-      () {},
+      () {
+        Navigator.pushNamed(context, 'Schedule');
+      },
       () {
         Navigator.pushNamed(context, 'AboutUs');
       },
