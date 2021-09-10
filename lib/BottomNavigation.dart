@@ -3,6 +3,7 @@ import 'Screens/DailyFeedScreen.dart';
 import 'Screens/MoreScreen.dart';
 import 'Screens/ResourceScreen.dart';
 import 'Screens/ProfileScreen.dart';
+import 'Screens/WebScreen.dart';
 import 'Widgets/BottomTabItem.dart';
 
 class BottomNavigation extends StatefulWidget {
@@ -26,9 +27,14 @@ class _BottomNavigationState extends State<BottomNavigation> {
         body: _children[currentIndex],
         floatingActionButton: FloatingActionButton(
             onPressed: () {
-              setState(() {
-                print("Made it");
-              });
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) {
+                    return WebScreen(
+                        title: "Contact Us",
+                        url: "https://www.thebeefoundation.org/contact/");
+                  }),
+                );
             },
             backgroundColor: Color(0xFFFFCD07),
             foregroundColor: Colors.white,  
@@ -61,7 +67,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                   });
                 }),
             Padding(
-              padding: EdgeInsets.only(right: 40.0),
+              padding: EdgeInsets.only(right: 37.0),
             child: BottomTabItem(
                 icon: AssetImage("images/resources_menu_ic.png"),
                 text: "Resources",

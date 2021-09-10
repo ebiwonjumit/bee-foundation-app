@@ -1,5 +1,5 @@
 import 'package:bee_foundation_app/Screens/FeaturedResourceScreen.dart';
-import 'package:bee_foundation_app/Screens/ShareYourStoryScreen.dart';
+import 'package:bee_foundation_app/Screens/FavoritesScreen.dart';
 import 'package:flutter/material.dart';
 
 class ResourceScreen extends StatefulWidget{
@@ -26,12 +26,12 @@ class ResourceScreenState extends State<ResourceScreen> {
                   indicatorColor: Color(0xFFFFCD07),
                   tabs: <Widget>[
                     Text("Featured Resources"),
-                    Text("Share Your Story")
+                    Text("Favorites")
                   ],
                 ),
               )),
           body: TabBarView(
-            children: <Widget>[FeaturedResourceScreen(), ShareYourStoryScreen()],
+            children: <Widget>[FeaturedResourceScreen(), FavoritesScreen()],
           ),
         ));
   }

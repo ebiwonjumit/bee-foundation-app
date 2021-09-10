@@ -18,7 +18,7 @@ class DailyFeedScreenState extends State<DailyFeedScreen> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   image: DecorationImage(
-                      image: AssetImage("images/festival_logo.png"))),
+                      image: AssetImage("images/festival_logo_new.png"))),
             ),
             centerTitle: true,
             elevation: 0,

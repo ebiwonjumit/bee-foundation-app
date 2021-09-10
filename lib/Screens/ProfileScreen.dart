@@ -1,5 +1,5 @@
-import 'package:bee_foundation_app/Screens/YourInfoScreen.dart';
-import 'package:bee_foundation_app/Screens/SavedResourcesScreen.dart';
+import 'package:bee_foundation_app/Screens/MyProfileScreen.dart';
+import 'package:bee_foundation_app/Screens/MyJournalScreen.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -23,13 +23,13 @@ class ProfileScreenState extends State<ProfileScreen> {
                 bottom: TabBar(
                   indicatorColor: Color(0xFFFFCD07),
                   tabs: <Widget>[
-                    Text("Your Information"),
-                    Text("Saved Resources")
+                    Text("My Profile"),
+                    Text("My Journal")
                   ],
                 ),
               )),
           body: TabBarView(
-            children: <Widget>[YourInfoScreen(),SavedResourceScreen()],
+            children: <Widget>[MyProfileScreen(),MyJournalScreen()],
           ),
         ));
   }

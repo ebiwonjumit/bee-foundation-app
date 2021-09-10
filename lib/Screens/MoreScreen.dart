@@ -11,16 +11,19 @@ class MoreScreen extends StatefulWidget {
 
 class MoreScreenState extends State<MoreScreen> {
   final List<String> moreItems = <String>[
+    "About the Bee Foundation",
     "Donate",
     "Schedule and Events",
-    "About the Bee Foundation",
-    "Social Media",
-    "Start a Fundraiser"
+    "Start a Fundraiser",
+    "Social Media"
   ];
 
   @override
   Widget build(BuildContext context) {
     final List<Function> moreItemsActions = <Function>[
+          () {
+        Navigator.pushNamed(context, 'AboutUs');
+      },
       () {
         Navigator.push(
           context,
@@ -34,21 +37,18 @@ class MoreScreenState extends State<MoreScreen> {
       () {
         Navigator.pushNamed(context, 'Schedule');
       },
-      () {
-        Navigator.pushNamed(context, 'AboutUs');
-      },
-      () {
-        Navigator.pushNamed(context, 'Social');
-      },
-      () {
+          () {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) {
             return WebScreen(
                 title: "Start a Fundraiser",
-                url: "https://www.thebeefoundation.org/contact/");
+                url: "https://www.thebeefoundation.org/fundraise-2/");
           }),
         );
+      },
+      () {
+        Navigator.pushNamed(context, 'Social');
       }
     ];
     return Scaffold(
