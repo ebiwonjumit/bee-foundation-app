@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'Screens/DailyFeedScreen.dart';
+import 'Screens/BottomNavs/DailyFeedScreen.dart';
 import 'Screens/MoreScreen.dart';
-import 'Screens/ResourceScreen.dart';
-import 'Screens/ProfileScreen.dart';
+import 'Screens/BottomNavs/ResourceScreen.dart';
+import 'Screens/BottomNavs/ProfileScreen.dart';
 import 'Screens/WebScreen.dart';
 import 'Widgets/BottomTabItem.dart';
 

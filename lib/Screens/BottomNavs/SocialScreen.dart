@@ -1,14 +1,13 @@
 import 'package:bee_foundation_app/Widgets/SocialScreenItem.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class SocialScreen extends StatelessWidget {
   final List<String> socialItems = <String>["Instagram", "Facebook", "Twitter"];
 
   final List<String> urlItems = <String>[
-    "instagram://user?username=thebeefoundation",
-    "fb://TheBeeFoundation",
-    "twitter://user?screen_name=thebeefoundation"
+    "https://www.instagram.com/thebeefoundation/",
+    "https://www.facebook.com/thebeefoundation",
+    "https://twitter.com/thebeefoundatio"
 
   ];
 
@@ -45,16 +44,7 @@ class SocialScreen extends StatelessWidget {
               if(index == 0 || index == socialItems.length + 1){
                 return Container();
               }
-              return SocialScreenItem(text: socialItems[index-1], onTap:
-                  () async {
-                if(await canLaunch(urlItems[index-1])){
-                  await launch(urlItems[index-1]);
-                }
-                else{
-                  throw 'Could not launch';
-                }
-
-              },);
+              return SocialScreenItem(text: socialItems[index-1], socialLink: urlItems[index-1],);
             },
             separatorBuilder: (BuildContext context, int index) => Divider(
               color: Color(0xFFDDDDDD),

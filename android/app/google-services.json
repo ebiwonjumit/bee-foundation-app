@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "21039939736",
+    "project_id": "beefoundationapp",
+    "storage_bucket": "beefoundationapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:21039939736:android:281983cf08c9c279c290ed",
+        "android_client_info": {
+          "package_name": "com.bee_foundation_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "21039939736-nf7dilgkslronh7df2p3le9af63s013p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBouTJmJzS9-offDn2pTWyDqk69LzaCq_w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "21039939736-nf7dilgkslronh7df2p3le9af63s013p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

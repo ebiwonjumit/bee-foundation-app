@@ -3,7 +3,8 @@ import 'package:bee_foundation_app/Screens/JournalEntryScreen.dart';
 import 'package:bee_foundation_app/Screens/ScheduleScreen.dart';
 import 'package:flutter/material.dart';
 import 'BottomNavigation.dart';
-import 'Screens/SocialScreen.dart';
+import 'Screens/BottomNavs/SocialScreen.dart';
+import 'Screens/LoginScreen.dart';
 import 'Screens/WebScreen.dart';
 
 void main() {
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         fontFamily: "Roboto",
       ),
       routes: {
-        '/': (context) => BottomNavigation(),
+        '/': (context) => LoginScreen(),
         'AboutUs': (context) => AboutUsScreen(),
         'Social': (context) => SocialScreen(),
         'Schedule': (context) => ScheduleScreen(),

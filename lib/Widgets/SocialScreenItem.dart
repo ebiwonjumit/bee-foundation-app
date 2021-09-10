@@ -1,10 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SocialScreenItem extends StatelessWidget {
   final String text;
-  final Function onTap;
+  final String socialLink;
 
-  const SocialScreenItem({Key? key, required this.text, required this.onTap}) : super(key: key);
+  const SocialScreenItem({Key? key, required this.text, required this.socialLink}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +31,52 @@ class SocialScreenItem extends StatelessWidget {
         ),
       ),
       onTap: () {
-        onTap;
+        whichURL(socialLink,text);
       },
     );
+  }
+
+  whichURL(String url, String text) async{
+    switch (text){
+      case "Facebook":
+        String fbProtocol;
+        if(Platform.isIOS){
+          fbProtocol = "fb://profile/1443707652564234";
+        }
+        else{
+          fbProtocol = "fb://page/1443707652564234";
+        }
+        try{
+          bool launched = await launch(fbProtocol);
+          if(!launched){
+            await launch(url);
+          }
+        } catch(e){
+          await _launchURL(url);
+        }
+        break;
+
+      case "Instagram":
+        _launchURL(url);
+        break;
+
+      case "Twitter":
+        _launchURL(url);
+        break;
+
+      default:
+        break;
+
+    }
+
+  }
+
+  _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 
   String images(String text) {
