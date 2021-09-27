@@ -1,5 +1,4 @@
 
-
 class BeeUser {
 
   final String userId;
