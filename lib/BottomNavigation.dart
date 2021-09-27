@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Screens/BottomNavs/DailyFeedScreen.dart';
-import 'Screens/MoreScreen.dart';
+import 'Screens/BottomNavs/MoreScreen.dart';
 import 'Screens/BottomNavs/ResourceScreen.dart';
 import 'Screens/BottomNavs/ProfileScreen.dart';
 import 'Screens/WebScreen.dart';

@@ -2,7 +2,7 @@ import 'package:bee_foundation_app/Widgets/MoreScreenItem.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-import 'WebScreen.dart';
+import '../WebScreen.dart';
 
 class MoreScreen extends StatefulWidget {
   @override

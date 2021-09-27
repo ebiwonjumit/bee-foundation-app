@@ -2,26 +2,31 @@ import 'package:flutter/material.dart';
 
 class YellowFormButton extends StatelessWidget {
   final String text;
-  final Function onTap;
+  final double height;
+  final double width;
+  final double borderRadius;
+  final Function onPressed;
 
-  const YellowFormButton({Key? key, required this.text, required this.onTap})
+  const YellowFormButton({Key? key, required this.text, required this.width, required this.height, required this.borderRadius, required this.onPressed})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      borderRadius: BorderRadius.circular(8.0),
-      child: Container(
-        color: Color(0xFFFFCD07),
+    return ElevatedButton(
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(Color(0xFFFFCD07)),
+          minimumSize: MaterialStateProperty.all(Size(width,height)),
+
+        ),
         child: Center(
           child: Text(
             text,
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 17),
           ),
         ),
-      ),
 
-      onTap: () async {onTap;},
+
+      onPressed: (){onPressed();},
     );
   }
 }

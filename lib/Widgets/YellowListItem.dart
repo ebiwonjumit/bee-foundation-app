@@ -60,7 +60,7 @@ class YellowListItem extends StatelessWidget {
             ],
           )),
       onTap: () {
-        onTap;
+        onTap();
       },
     );
   }

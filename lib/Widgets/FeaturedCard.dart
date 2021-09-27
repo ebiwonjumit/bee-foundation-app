@@ -30,7 +30,7 @@ class FeaturedCard extends StatelessWidget {
                 ))),
       ),
       onTap: (){
-        onTap;
+        onTap();
       },
     );
   }

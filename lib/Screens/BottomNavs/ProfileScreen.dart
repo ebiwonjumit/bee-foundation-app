@@ -1,6 +1,7 @@
-import 'package:bee_foundation_app/Screens/MyProfileScreen.dart';
-import 'package:bee_foundation_app/Screens/MyJournalScreen.dart';
+import 'package:bee_foundation_app/Screens/BottomNavs/MyJournalScreen.dart';
 import 'package:flutter/material.dart';
+
+import 'MyProfileScreen.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override

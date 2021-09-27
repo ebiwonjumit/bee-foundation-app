@@ -37,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.only(top: 15, left: 20),
+              padding: EdgeInsets.only(top: 15, left: 15),
               child: Center(
                   child: Text(
                 'Welcome Back',
@@ -45,21 +45,29 @@ class _LoginScreenState extends State<LoginScreen> {
               )),
             ),
             SizedBox(height: 40.0,),
-            TextField(
-              decoration: InputDecoration(
-                hintText: "Email",
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: "Email",
+                ),
+                controller: emailController,
               ),
-              controller: emailController,
             ),
-            SizedBox(height: 20,),
-            TextField(
-              decoration: InputDecoration(
-                hintText: "Password"
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: "Password",
+                ),
+                controller: passwordController,
+                obscureText: true,
               ),
-              controller: passwordController,
             ),
-            SizedBox(height: 10.0,),
-            YellowFormButton(text: "Login", onTap: (){})
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: YellowFormButton(text: "Login", width: 400.0, height: 40.0, borderRadius: 10, onPressed: (){}),
+            )
           ],
         ),
       ),
