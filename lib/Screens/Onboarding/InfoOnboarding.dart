@@ -77,10 +77,11 @@ class _InfoOnboardingState extends State<InfoOnboarding> {
   //UserModel
   BeeInfo userInfo = BeeInfo(
       userId: "",
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "");
+      firstName: null,
+      lastName: null,
+      email: null,
+      password: null,
+      userImage: null);
 
   @override
   void initState() {
@@ -212,14 +213,13 @@ class _InfoOnboardingState extends State<InfoOnboarding> {
                       borderRadius: 20,
                       onPressed: () {
                         if (infoOnboardingKey.currentState!.validate()) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Onto the next page')),
-                          );
                           userInfo.firstName = firstNameController.text;
                           userInfo.lastName = lastNameController.text;
                           userInfo.email = emailController.text;
                           userInfo.password = passwordController.text;
+                          userInfo.userImage = _imageFile;
                           print(userInfo);
+                          Navigator.pushNamed(context, 'QuestionsOnboarding');
                         }
                       }),
                 ),

@@ -1,4 +1,5 @@
 import 'package:bee_foundation_app/Screens/Onboarding/InfoOnboarding.dart';
+import 'package:bee_foundation_app/Screens/Onboarding/QuestionsOnboarding.dart';
 import 'package:bee_foundation_app/Screens/SocialScreens/AboutUsScreen.dart';
 import 'package:bee_foundation_app/Screens/JournalEntryScreen.dart';
 import 'package:bee_foundation_app/Screens/SocialScreens/ScheduleScreen.dart';
@@ -24,11 +25,15 @@ class MyApp extends StatelessWidget {
         fontFamily: "Roboto",
       ),
       routes: {
-        '/': (context) => InfoOnboarding(),
+        '/': (context) => LoginScreen(),
+        'Home': (context) => BottomNavigation(),
+        'Login': (context) => LoginScreen(),
         'AboutUs': (context) => AboutUsScreen(),
         'Social': (context) => SocialScreen(),
         'Schedule': (context) => ScheduleScreen(),
-        'Journal Entry': (context) => JournalEntryScreen()
+        'Journal Entry': (context) => JournalEntryScreen(),
+        'InfoOnboarding': (context) => InfoOnboarding(),
+        'QuestionsOnboarding': (context) => QuestionsOnboarding()
       },
       initialRoute: '/',
     );

@@ -1,5 +1,5 @@
-import 'package:bee_foundation_app/Screens/FeaturedResourceScreen.dart';
-import 'package:bee_foundation_app/Screens/FavoritesScreen.dart';
+import 'package:bee_foundation_app/Screens/BottomNavs/FeaturedResourceScreen.dart';
+import 'package:bee_foundation_app/Screens/BottomNavs/FavoritesScreen.dart';
 import 'package:flutter/material.dart';
 
 class ResourceScreen extends StatefulWidget{
