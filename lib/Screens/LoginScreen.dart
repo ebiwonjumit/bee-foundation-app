@@ -1,3 +1,4 @@
+import 'package:bee_foundation_app/dbs/AuthService.dart';
 import 'package:flutter/material.dart';
 import 'package:wc_form_validators/wc_form_validators.dart';
 import 'package:bee_foundation_app/Widgets/YellowFormButton.dart';
@@ -11,10 +12,12 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final logInOnboardingKey = GlobalKey<FormState>();
+  final AuthService _authService = AuthService();
 
   //States for TextFields
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  String loginErrorMessage = "";
   bool _passwordVisible = false;
 
   @override
@@ -104,10 +107,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     width: 400.0,
                     height: 40.0,
                     borderRadius: 10,
-                    onPressed: () {
+                    onPressed: () async {
                       if (logInOnboardingKey.currentState!.validate()) {
-                        Navigator.pushNamedAndRemoveUntil(
-                            context, 'Home', (route) => false);
+                        dynamic result = await _authService.signInWithEmailAndPassword(emailController.text, passwordController.text);
+                        if(result == null){
+                          setState(() {
+                            loginErrorMessage = "Email and password not recognized";
+                          });
+                        }
+                        else {
+                          Navigator.pushNamedAndRemoveUntil(
+                              context, 'Home', (route) => false);
+                        }
                       }
                     }),
               ),
@@ -134,7 +145,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: TextButton.styleFrom(
                             primary: Colors.yellow.shade700,
                             textStyle: TextStyle(fontFamily: 'Roboto')),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, 'InfoOnboarding');
+                        },
                         child: Text(
                           "Create Account",
                         ),
