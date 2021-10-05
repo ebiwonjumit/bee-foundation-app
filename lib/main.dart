@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 import 'BottomNavigation.dart';
 import 'Screens/BottomNavs/SocialScreen.dart';
 import 'Screens/LoginScreen.dart';
-import 'dbs/AuthService.dart';
+import 'dbs/services/AuthService.dart';
 import 'dbs/models/BeeUser.dart';
 
 void main() async{

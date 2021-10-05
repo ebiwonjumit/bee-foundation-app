@@ -1,5 +1,6 @@
-import 'package:bee_foundation_app/Widgets/BeeInspired.dart';
 import 'package:bee_foundation_app/Widgets/YellowListItem.dart';
+import 'package:bee_foundation_app/dbs/services/AuthService.dart';
+import 'package:bee_foundation_app/dbs/services/StorageService.dart';
 import 'package:flutter/material.dart';
 
 class MyProfileScreen extends StatefulWidget {
@@ -8,8 +9,15 @@ class MyProfileScreen extends StatefulWidget {
 }
 
 class MyProfileScreenState extends State<MyProfileScreen> {
+
+  //Services
+  StorageService _storageService = StorageService();
+  AuthService _authService = AuthService();
+
   @override
   Widget build(BuildContext context) {
+    Future<String> imageUrl = _storageService.downloadProfileImage(_authService.getUser()!.uid);
+    String img = imageUrl.toString();
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -19,7 +27,7 @@ class MyProfileScreenState extends State<MyProfileScreen> {
               padding: EdgeInsets.only(top: 20),
               child: CircleAvatar(
                 radius: 75,
-                backgroundImage: AssetImage('images/test_profile.jpg'),
+                backgroundImage: NetworkImage(img),
               )),
           Padding(
               padding: EdgeInsets.only(top: 15, bottom: 7),

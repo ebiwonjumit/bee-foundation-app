@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:bee_foundation_app/Widgets/YellowFormButton.dart';
 import 'package:bee_foundation_app/dbs/models/BeeInfo.dart';
+import 'package:bee_foundation_app/dbs/services/AuthService.dart';
+import 'package:bee_foundation_app/dbs/services/StorageService.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:wc_form_validators/wc_form_validators.dart';
@@ -15,6 +17,10 @@ class InfoOnboarding extends StatefulWidget {
 
 class _InfoOnboardingState extends State<InfoOnboarding> {
   final infoOnboardingKey = GlobalKey<FormState>();
+
+  //Services
+  StorageService _storageService = StorageService();
+  AuthService _authService = AuthService();
 
   //States for TextFields
   final emailController = TextEditingController();
@@ -122,15 +128,13 @@ class _InfoOnboardingState extends State<InfoOnboarding> {
                       },
                       child: CircleAvatar(
                           radius: 75,
-                          child: CircleAvatar(
-                            child: ClipOval(
-                              child: (_imageFile != null)
-                                  ? Image.file(
-                                      _imageFile!,
-                                      fit: BoxFit.fill,
-                                    )
-                                  : Icon(Icons.add_a_photo_outlined),
-                            ),
+                          child: ClipOval(
+                            child: (_imageFile != null)
+                                ? Image.file(
+                                    _imageFile!,
+                                    fit: BoxFit.fill,
+                                  )
+                                : Icon(Icons.add_a_photo_outlined),
                           )),
                     )),
               ),
@@ -211,13 +215,15 @@ class _InfoOnboardingState extends State<InfoOnboarding> {
                       width: 100.0,
                       height: 40.0,
                       borderRadius: 20,
-                      onPressed: () {
+                      onPressed: () async {
                         if (infoOnboardingKey.currentState!.validate()) {
                           userInfo.firstName = firstNameController.text;
                           userInfo.lastName = lastNameController.text;
                           userInfo.email = emailController.text;
                           userInfo.password = passwordController.text;
-                          userInfo.userImage = _imageFile;
+                          _authService.registerWithEmailAndPassword(emailController.text, passwordController.text);
+                          _storageService.uploadProfileImage(_imageFile);
+
                           print(userInfo);
                           Navigator.pushNamed(context, 'QuestionsOnboarding');
                         }

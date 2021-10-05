@@ -1,4 +1,4 @@
-import 'package:bee_foundation_app/dbs/AuthService.dart';
+import 'package:bee_foundation_app/dbs/services/AuthService.dart';
 import 'package:flutter/material.dart';
 import 'package:wc_form_validators/wc_form_validators.dart';
 import 'package:bee_foundation_app/Widgets/YellowFormButton.dart';
