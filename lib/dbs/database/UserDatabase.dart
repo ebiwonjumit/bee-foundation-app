@@ -7,12 +7,16 @@ class UserDatabase{
 
   //collection ref
 
-  final CollectionReference userDataCollection = FirebaseFirestore.instance.collection("userInfo");
+  final CollectionReference userDataCollection = FirebaseFirestore.instance.collection("userInformation");
 
-  Future updateUserInformation(String firstName, String lastName, ) async{
+  Future updateUserInformation(String firstName, String lastName) async{
     return await userDataCollection.doc(uid).set({
+      'First Name': firstName,
+      'Last Name': lastName,
 
     });
   }
+
+  //Get
 
 }

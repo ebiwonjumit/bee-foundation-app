@@ -8,22 +8,25 @@ class StorageService {
       FirebaseStorage.instanceFor(bucket: "gs://beefoundationapp.appspot.com");
 
   AuthService _authService = AuthService();
-  String _downUrl = "";
 
-  Future<void> uploadProfileImage(File? file) async {
+
+  Future<String> uploadProfileImage(File? file) async {
     var userId = _authService.getUser()!.uid;
     Reference reference = firebaseStorage.ref().child("user/profile/$userId");
+
 
     try {
       await reference
           .putFile(file!)
           .whenComplete(() async{
-            _downUrl = reference.getDownloadURL().toString();
+           String downUrl = reference.getDownloadURL().toString();
+           return downUrl;
       });
     } on FirebaseException catch (e) {
       print(e.toString());
-      return null;
+      return "";
     }
+    return "";
   }
 
   Future<String> downloadProfileImage(String userId) async {

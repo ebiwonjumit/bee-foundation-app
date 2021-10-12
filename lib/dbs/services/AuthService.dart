@@ -1,3 +1,4 @@
+import 'package:bee_foundation_app/dbs/database/UserDatabase.dart';
 import 'package:bee_foundation_app/dbs/models/BeeUser.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -21,10 +22,11 @@ class AuthService with ChangeNotifier{
   }
 
   //register with email & password
-  Future registerWithEmailAndPassword(String email, String password) async{
+  Future registerWithEmailAndPassword(String email, String password, String firstName, String lastName) async{
     try{
       UserCredential result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
       User? user = result.user;
+      await UserDatabase(uid: user!.uid).updateUserInformation(firstName, lastName);
       return _userFromFirebaseUser(user);
     }
     catch(e){
@@ -53,6 +55,7 @@ class AuthService with ChangeNotifier{
   //sign out
   Future logout() async {
     var result = FirebaseAuth.instance.signOut();
+
     notifyListeners();
     return result;
   }

@@ -87,7 +87,8 @@ class _InfoOnboardingState extends State<InfoOnboarding> {
       lastName: null,
       email: null,
       password: null,
-      userImage: null);
+      userImage: null,
+      userImageUrl: null);
 
   @override
   void initState() {
@@ -126,16 +127,13 @@ class _InfoOnboardingState extends State<InfoOnboarding> {
                       onTap: () {
                         _showPicker(context);
                       },
-                      child: CircleAvatar(
-                          radius: 75,
-                          child: ClipOval(
-                            child: (_imageFile != null)
-                                ? Image.file(
-                                    _imageFile!,
-                                    fit: BoxFit.fill,
-                                  )
-                                : Icon(Icons.add_a_photo_outlined),
-                          )),
+                      child:
+                      (_imageFile != null) ?
+                          CircleAvatar(
+                            radius: 75,
+                            backgroundImage: Image.file(_imageFile!, fit: BoxFit.fill,).image,
+                          ) : CircleAvatar(radius: 75, child: Icon(Icons.add_a_photo_outlined)
+                      ),
                     )),
               ),
               Padding(
@@ -221,8 +219,13 @@ class _InfoOnboardingState extends State<InfoOnboarding> {
                           userInfo.lastName = lastNameController.text;
                           userInfo.email = emailController.text;
                           userInfo.password = passwordController.text;
-                          _authService.registerWithEmailAndPassword(emailController.text, passwordController.text);
-                          _storageService.uploadProfileImage(_imageFile);
+                          _authService.registerWithEmailAndPassword(
+                              emailController.text,
+                              passwordController.text,
+                              firstNameController.text,
+                              lastNameController.text);
+                          userInfo.userImageUrl = await _storageService
+                              .uploadProfileImage(_imageFile);
 
                           print(userInfo);
                           Navigator.pushNamed(context, 'QuestionsOnboarding');
@@ -236,4 +239,29 @@ class _InfoOnboardingState extends State<InfoOnboarding> {
       ),
     );
   }
+
+  ImageProvider iconImage(File? imageFile) {
+    if (imageFile != null) {
+      return Image.file(imageFile, fit: BoxFit.fill).image;
+    }
+    return AssetImage("outline_add_a_photo_black_24dp.png");
+  }
 }
+
+class CircleRevealClipper extends CustomClipper<Rect> {   CircleRevealClipper();
+
+@override   Rect getClip(Size size) {
+  final epicenter = new Offset(size.width, size.height);
+
+  // Calculate distance from epicenter to the top left corner to make sure clip the image into circle.
+
+  final distanceToCorner = epicenter.dy;
+
+  final radius = distanceToCorner;
+  final diameter = radius;
+
+  return new Rect.fromLTWH(
+      epicenter.dx - radius, epicenter.dy - radius, diameter, diameter);   }
+
+@override   bool shouldReclip(CustomClipper<Rect> oldClipper) {
+  return true;   } }
