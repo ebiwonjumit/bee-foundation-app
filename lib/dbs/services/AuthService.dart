@@ -26,6 +26,8 @@ class AuthService with ChangeNotifier{
     try{
       UserCredential result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
       User? user = result.user;
+
+      //Create new document for user in Firestore
       await UserDatabase(uid: user!.uid).updateUserInformation(firstName, lastName);
       return _userFromFirebaseUser(user);
     }

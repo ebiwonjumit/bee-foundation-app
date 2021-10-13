@@ -5,10 +5,11 @@ class UserDatabase{
   final String uid;
   UserDatabase({required this.uid});
 
+
+
+  final CollectionReference userDataCollection = FirebaseFirestore.instance.collection("userInfo");
+
   //collection ref
-
-  final CollectionReference userDataCollection = FirebaseFirestore.instance.collection("userInformation");
-
   Future updateUserInformation(String firstName, String lastName) async{
     return await userDataCollection.doc(uid).set({
       'First Name': firstName,
@@ -17,6 +18,15 @@ class UserDatabase{
     });
   }
 
-  //Get
+  //Get UserInfo Stream
+  Stream<QuerySnapshot> getUserInformation(){
+    return userDataCollection.snapshots();
+
+  }
+
+  //Get UserData DocumentSnapshot
+  Future<DocumentSnapshot> getUserData() async{
+    return await userDataCollection.doc(uid).get();
+  }
 
 }

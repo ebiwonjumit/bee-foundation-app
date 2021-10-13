@@ -222,8 +222,9 @@ class _InfoOnboardingState extends State<InfoOnboarding> {
                           _authService.registerWithEmailAndPassword(
                               emailController.text,
                               passwordController.text,
-                              firstNameController.text,
-                              lastNameController.text);
+                            firstNameController.text,
+                            lastNameController.text,
+                          );
                           userInfo.userImageUrl = await _storageService
                               .uploadProfileImage(_imageFile);
 
@@ -239,29 +240,5 @@ class _InfoOnboardingState extends State<InfoOnboarding> {
       ),
     );
   }
-
-  ImageProvider iconImage(File? imageFile) {
-    if (imageFile != null) {
-      return Image.file(imageFile, fit: BoxFit.fill).image;
-    }
-    return AssetImage("outline_add_a_photo_black_24dp.png");
-  }
 }
 
-class CircleRevealClipper extends CustomClipper<Rect> {   CircleRevealClipper();
-
-@override   Rect getClip(Size size) {
-  final epicenter = new Offset(size.width, size.height);
-
-  // Calculate distance from epicenter to the top left corner to make sure clip the image into circle.
-
-  final distanceToCorner = epicenter.dy;
-
-  final radius = distanceToCorner;
-  final diameter = radius;
-
-  return new Rect.fromLTWH(
-      epicenter.dx - radius, epicenter.dy - radius, diameter, diameter);   }
-
-@override   bool shouldReclip(CustomClipper<Rect> oldClipper) {
-  return true;   } }

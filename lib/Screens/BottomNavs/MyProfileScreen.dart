@@ -1,8 +1,11 @@
 import 'package:bee_foundation_app/Widgets/YellowFormButton.dart';
+import 'package:bee_foundation_app/dbs/database/UserDatabase.dart';
 import 'package:bee_foundation_app/dbs/services/AuthService.dart';
 import 'package:bee_foundation_app/dbs/services/StorageService.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:provider/provider.dart';
 
 class MyProfileScreen extends StatefulWidget {
   @override
@@ -14,6 +17,7 @@ class MyProfileScreenState extends State<MyProfileScreen> {
   StorageService _storageService = StorageService();
   AuthService _authService = AuthService();
   String img = "";
+  DocumentSnapshot? userData;
 
   @override
   void initState() {
@@ -31,6 +35,14 @@ class MyProfileScreenState extends State<MyProfileScreen> {
       });
       return "";
     });
+    UserDatabase(uid: _authService.getUser()!.uid).getUserData().then((DocumentSnapshot result){
+      setState(() {
+        userData = result;
+      });
+    }
+
+    );
+
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -50,7 +62,7 @@ class MyProfileScreenState extends State<MyProfileScreen> {
           Padding(
               padding: EdgeInsets.only(top: 15, bottom: 7),
               child: Text(
-                'Jeffery Stuggard',
+       "${userData!['First Name']} ${userData!['Last Name']}",
                 style: TextStyle(
                     fontFamily: "Roboto",
                     fontWeight: FontWeight.w500,
