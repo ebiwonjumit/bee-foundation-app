@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 class FeaturedCard extends StatelessWidget {
   final String text;
   final Function onTap;
+  final String? backgroundImage;
   final Color color;
 
   const FeaturedCard(
-      {Key? key, required this.text, required this.onTap, required this.color})
+      {Key? key, required this.text, required this.onTap, required this.color, this.backgroundImage})
       : super(key: key);
 
   @override

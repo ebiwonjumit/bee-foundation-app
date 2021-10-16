@@ -39,9 +39,7 @@ class MyProfileScreenState extends State<MyProfileScreen> {
       setState(() {
         userData = result;
       });
-    }
-
-    );
+    });
 
     return SingleChildScrollView(
       child: Column(

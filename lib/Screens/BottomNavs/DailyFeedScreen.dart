@@ -1,4 +1,7 @@
+import 'package:bee_foundation_app/Widgets/BeeInspired.dart';
 import 'package:bee_foundation_app/Widgets/FeaturedCard.dart';
+import 'package:bee_foundation_app/dbs/database/BeeDatabase.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class DailyFeedScreen extends StatefulWidget {
@@ -7,8 +10,18 @@ class DailyFeedScreen extends StatefulWidget {
 }
 
 class DailyFeedScreenState extends State<DailyFeedScreen> {
+  //Services
+
+  DocumentSnapshot? promptData;
+
   @override
   Widget build(BuildContext context) {
+    BeeDatabase().getDailyPromptData().then((DocumentSnapshot value) {
+      setState(() {
+        promptData = value;
+      });
+    });
+
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(150),
@@ -37,25 +50,38 @@ class DailyFeedScreenState extends State<DailyFeedScreen> {
             ),
           ),
           Padding(
-              padding: EdgeInsets.only(left: 14),
-              child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      FeaturedCard(
-                          text: "Event 1", onTap: () {}, color: Colors.blue),
-                      FeaturedCard(
-                        text: "Event 2",
-                        onTap: () {},
-                        color: Colors.brown,
-                      ),
-                      FeaturedCard(
-                        text: "Event 3",
-                        onTap: () {},
-                        color: Colors.pink,
-                      )
-                    ],
-                  ))),
+              padding: EdgeInsets.only(left: 14, bottom: 10),
+              child: StreamBuilder<QuerySnapshot>(
+                  stream: BeeDatabase().featuredEventsStream,
+                  builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                    List<DocumentSnapshot> events = snapshot.data!.docs;
+                    return SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            FeaturedCard(
+                              text: events[0]['Event Name'],
+                              onTap: () {},
+                              color: Colors.blue,
+                            ),
+                            FeaturedCard(
+                              text: "Event 2",
+                              onTap: () {},
+                              color: Colors.brown,
+                            ),
+                            FeaturedCard(
+                              text: "Event 3",
+                              onTap: () {},
+                              color: Colors.pink,
+                            )
+                          ],
+                        ));
+                  })),
+          Padding(
+              padding: EdgeInsets.only(left: 20),
+              child: BeeInspired(
+                prompt: "${promptData!['Prompt']}",
+              )),
           Padding(
             padding: EdgeInsets.only(top: 15, left: 20),
             child: Text(

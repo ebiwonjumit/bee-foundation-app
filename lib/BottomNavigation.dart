@@ -39,7 +39,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
             backgroundColor: Color(0xFFFFCD07),
             foregroundColor: Colors.white,  
             child: Align(
-                widthFactor: 1,
+                widthFactor: 2,
                 child: ImageIcon(
                   AssetImage(
                     "images/bee_icon.png",

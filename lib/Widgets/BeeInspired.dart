@@ -1,13 +1,11 @@
+import 'package:bee_foundation_app/Screens/JournalEntryScreen.dart';
 import 'package:flutter/material.dart';
 
-class BeeInspired extends StatefulWidget {
-  const BeeInspired({Key? key}) : super(key: key);
+class BeeInspired extends StatelessWidget {
 
-  @override
-  _BeeInspiredState createState() => _BeeInspiredState();
-}
+  final String prompt;
 
-class _BeeInspiredState extends State<BeeInspired> {
+  const BeeInspired({Key? key, required this.prompt}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -28,7 +26,7 @@ class _BeeInspiredState extends State<BeeInspired> {
                   Padding(
                     padding: EdgeInsets.only(top: 10, bottom: 5),
                     child: Text(
-                      "Here is a daily prompt that people can \n answer in their journal.",
+                      prompt,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -43,7 +41,7 @@ class _BeeInspiredState extends State<BeeInspired> {
             ),
           ),
           onTap: () {
-            Navigator.pushNamed(context, 'Journal Entry');
+            Navigator.push(context,MaterialPageRoute(builder: (context) => JournalEntryScreen(prompt: prompt,)));
           },
         ));
   }
