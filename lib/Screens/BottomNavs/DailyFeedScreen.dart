@@ -85,7 +85,7 @@ class DailyFeedScreenState extends State<DailyFeedScreen> {
           Padding(
             padding: EdgeInsets.only(top: 15, left: 20),
             child: Text(
-              'Daily Feed',
+              'The Buzz',
               style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
             ),
           ),
