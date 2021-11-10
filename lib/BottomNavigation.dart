@@ -7,7 +7,8 @@ import 'Screens/WebScreen.dart';
 import 'Widgets/BottomTabItem.dart';
 
 class BottomNavigation extends StatefulWidget {
-
+  const BottomNavigation({Key? key}) : super(key: key);
+  static Page page() => const MaterialPage<void>(child: BottomNavigation());
   @override
   _BottomNavigationState createState() => _BottomNavigationState();
 }

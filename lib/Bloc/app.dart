@@ -3,6 +3,7 @@ import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc/app_bloc.dart';
+import 'routes.dart';
 import 'theme.dart';
 class App extends StatelessWidget {
   const App({
@@ -34,6 +35,7 @@ class AppView extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: theme,
+      debugShowCheckedModeBanner: false,
       home: FlowBuilder<AppStatus>(
         state: context.select((AppBloc bloc) => bloc.state.status),
         onGeneratePages: onGenerateAppViewPages,
