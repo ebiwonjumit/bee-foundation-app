@@ -48,123 +48,120 @@ class _LoginScreenState extends State<LoginScreen> {
             elevation: 0,
           )),
       extendBodyBehindAppBar: false,
-      body: BlocProvider(
-        create: (_) => LoginCubit(context.read<AuthenticationRepository>()),
-        child: SingleChildScrollView(
-          child: Form(
-            key: logInOnboardingKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(top: 15, left: 15),
-                  child: Center(
-                      child: Text(
-                    'Welcome Back',
-                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 23),
-                  )),
+      body: SingleChildScrollView(
+        child: Form(
+          key: logInOnboardingKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(top: 15, left: 15),
+                child: Center(
+                    child: Text(
+                  'Welcome Back',
+                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 23),
+                )),
+              ),
+              SizedBox(
+                height: 40.0,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    labelText: "Email",
+                    labelStyle: TextStyle(color: Colors.grey),
+                  ),
+                  controller: emailController,
+                  validator: Validators.compose([
+                    Validators.required('Email is required'),
+                    Validators.email('Please enter a valid email address')
+                  ]),
                 ),
-                SizedBox(
-                  height: 40.0,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      labelText: "Email",
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      labelText: "Password",
                       labelStyle: TextStyle(color: Colors.grey),
-                    ),
-                    controller: emailController,
-                    validator: Validators.compose([
-                      Validators.required('Email is required'),
-                      Validators.email('Please enter a valid email address')
-                    ]),
-                  ),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _passwordVisible
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          color: Colors.grey,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _passwordVisible = !_passwordVisible;
+                          });
+                        },
+                      )),
+                  controller: passwordController,
+                  obscureText: !_passwordVisible,
+                  validator: Validators.required('Password is required'),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                        labelText: "Password",
-                        labelStyle: TextStyle(color: Colors.grey),
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            _passwordVisible
-                                ? Icons.visibility
-                                : Icons.visibility_off,
-                            color: Colors.grey,
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              _passwordVisible = !_passwordVisible;
-                            });
-                          },
-                        )),
-                    controller: passwordController,
-                    obscureText: !_passwordVisible,
-                    validator: Validators.required('Password is required'),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                      left: 20.0, right: 20.0, top: 20.0),
-                  child: YellowFormButton(
-                      text: "Login",
-                      width: 400.0,
-                      height: 40.0,
-                      borderRadius: 10,
-                      onPressed: () async {
-                        if (logInOnboardingKey.currentState!.validate()) {
-                          dynamic result = await _authService.signInWithEmailAndPassword(emailController.text, passwordController.text);
-                          if(result == null){
-                            setState(() {
-                              loginErrorMessage = "Email and password not recognized";
-                            });
-                          }
-                          else {
-                            Navigator.pushNamedAndRemoveUntil(
-                                context, 'Home', (route) => false);
-                          }
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 20.0, right: 20.0, top: 20.0),
+                child: YellowFormButton(
+                    text: "Login",
+                    width: 400.0,
+                    height: 40.0,
+                    borderRadius: 10,
+                    onPressed: () async {
+                      if (logInOnboardingKey.currentState!.validate()) {
+                        dynamic result = await _authService.signInWithEmailAndPassword(emailController.text, passwordController.text);
+                        if(result == null){
+                          setState(() {
+                            loginErrorMessage = "Email and password not recognized";
+                          });
                         }
-                      }),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 22.0, right: 22.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: TextButton(
-                          style: TextButton.styleFrom(
-                              primary: Colors.yellow.shade700,
-                              textStyle: TextStyle(fontFamily: 'Roboto')),
-                          onPressed: () {},
-                          child: Text('Forgot Password?'),
+                        else {
+                          Navigator.pushNamedAndRemoveUntil(
+                              context, 'Home', (route) => false);
+                        }
+                      }
+                    }),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 22.0, right: 22.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                            primary: Colors.yellow.shade700,
+                            textStyle: TextStyle(fontFamily: 'Roboto')),
+                        onPressed: () {},
+                        child: Text('Forgot Password?'),
+                      ),
+                    ),
+                    Spacer(),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                            primary: Colors.yellow.shade700,
+                            textStyle: TextStyle(fontFamily: 'Roboto')),
+                        onPressed: () {
+                          Navigator.pushNamed(context, 'InfoOnboarding');
+                        },
+                        child: Text(
+                          "Create Account",
                         ),
                       ),
-                      Spacer(),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: TextButton(
-                          style: TextButton.styleFrom(
-                              primary: Colors.yellow.shade700,
-                              textStyle: TextStyle(fontFamily: 'Roboto')),
-                          onPressed: () {
-                            Navigator.pushNamed(context, 'InfoOnboarding');
-                          },
-                          child: Text(
-                            "Create Account",
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                )
-              ],
-            ),
+                    )
+                  ],
+                ),
+              )
+            ],
           ),
         ),
       ),
