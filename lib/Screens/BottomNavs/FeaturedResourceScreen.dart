@@ -30,17 +30,17 @@ class FeaturedResourceScreenState extends State<FeaturedResourceScreen> {
                   children: [
                     FeaturedCard(
                         text: "Important Info",
-                        onTap: () {},
-                        color: Colors.blue),
+                        webLink: "",
+                        color: Colors.blue, backgroundImage: '',),
                     FeaturedCard(
                       text: "More Important Stuff",
-                      onTap: () {},
-                      color: Colors.black,
+                      webLink: "",
+                      color: Colors.black, backgroundImage: '',
                     ),
                     FeaturedCard(
                       text: "Super Important Info",
-                      onTap: () {},
-                      color: Colors.pink,
+                      webLink: "",
+                      color: Colors.pink, backgroundImage: '',
                     )
                   ],
                 ))),

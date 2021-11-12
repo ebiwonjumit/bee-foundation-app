@@ -50,6 +50,20 @@ class AuthService with ChangeNotifier{
     }
   }
 
+  //sign in Anon
+
+  Future signInAnon() async{
+    try{
+      UserCredential result = await _auth.signInAnonymously();
+      User? user = result.user;
+      // return _userFromFirebaseUser(user);
+    }
+    catch(e){
+      print(e.toString());
+      return null;
+    }
+  }
+
 
   //sign in with OAuth
 

@@ -1,13 +1,19 @@
+import 'package:bee_foundation_app/Screens/WebScreen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class FeaturedCard extends StatelessWidget {
   final String text;
-  final Function onTap;
-  final String? backgroundImage;
-  final Color color;
+  final String webLink;
+  final String backgroundImage;
+  final Color? color;
 
   const FeaturedCard(
-      {Key? key, required this.text, required this.onTap, required this.color, this.backgroundImage})
+      {Key? key,
+      required this.text,
+      required this.webLink,
+      this.color,
+      required this.backgroundImage})
       : super(key: key);
 
   @override
@@ -16,7 +22,11 @@ class FeaturedCard extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.all(6),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5), color: color),
+            borderRadius: BorderRadius.circular(5),
+            color: color,
+            image: DecorationImage(
+                image: NetworkImage(backgroundImage), fit: BoxFit.fill)
+        ),
         width: 200,
         height: 125,
         child: Align(
@@ -26,12 +36,21 @@ class FeaturedCard extends StatelessWidget {
                 child: Text(
                   text,
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold
                   ),
                 ))),
       ),
-      onTap: (){
-        onTap();
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) {
+            return WebScreen(
+                title: text,
+                url: webLink);
+          }),
+        );
       },
     );
   }

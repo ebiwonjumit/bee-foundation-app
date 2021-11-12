@@ -13,14 +13,13 @@ class DailyFeedScreenState extends State<DailyFeedScreen> {
   //Services
 
   DocumentSnapshot? promptData;
-
   @override
   Widget build(BuildContext context) {
-    BeeDatabase().getDailyPromptData().then((DocumentSnapshot value) {
-      setState(() {
-        promptData = value;
-      });
-    });
+    // BeeDatabase().getDailyPromptData().then((DocumentSnapshot value) {
+    //   setState(() {
+    //     promptData = value;
+    //   });
+    // });
 
     return Scaffold(
       appBar: PreferredSize(
@@ -61,18 +60,17 @@ class DailyFeedScreenState extends State<DailyFeedScreen> {
                           children: [
                             FeaturedCard(
                               text: events[0]['Event Name'],
-                              onTap: () {},
-                              color: Colors.blue,
+                              webLink: events[0]['Link'],
+                              backgroundImage: events[0]['Picture'],
+                              color: Colors.red,
                             ),
                             FeaturedCard(
                               text: "Event 2",
-                              onTap: () {},
-                              color: Colors.brown,
+                              color: Colors.brown, webLink: '', backgroundImage: '',
                             ),
                             FeaturedCard(
                               text: "Event 3",
-                              onTap: () {},
-                              color: Colors.pink,
+                              color: Colors.pink, backgroundImage: '', webLink: '',
                             )
                           ],
                         ));
@@ -80,7 +78,8 @@ class DailyFeedScreenState extends State<DailyFeedScreen> {
           Padding(
               padding: EdgeInsets.only(left: 20),
               child: BeeInspired(
-                prompt: "${promptData!['Prompt']}",
+                // prompt: "${promptData!['Prompt']}",
+                prompt: "Hey",
               )),
           Padding(
             padding: EdgeInsets.only(top: 15, left: 20),

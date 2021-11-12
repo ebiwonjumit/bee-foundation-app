@@ -17,7 +17,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   final List<Widget> _children = [
     DailyFeedScreen(),
     ResourceScreen(),
-    ProfileScreen(),
+    // ProfileScreen(),
     MoreScreen()
   ];
 
@@ -46,7 +46,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                   ),
                   size: 32,
                 ))),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         bottomNavigationBar: _buildBottomFabBar());
   }
 
@@ -67,7 +67,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                   });
                 }),
             Padding(
-              padding: EdgeInsets.only(right: 37.0),
+              padding: EdgeInsets.only(right: 30.0),
             child: BottomTabItem(
                 icon: AssetImage("images/resources_menu_ic.png"),
                 text: "Resources",
@@ -78,22 +78,12 @@ class _BottomNavigationState extends State<BottomNavigation> {
                   });
                 })),
             BottomTabItem(
-              icon: AssetImage("images/profile_menu_ic.png"),
-              text: "Profile",
+              icon: AssetImage("images/more_menu_ic.png"),
+              text: "More",
               isSelected: currentIndex == 2,
               onTap: () {
                 setState(() {
                   currentIndex = 2;
-                });
-              },
-            ),
-            BottomTabItem(
-              icon: AssetImage("images/more_menu_ic.png"),
-              text: "More",
-              isSelected: currentIndex == 3,
-              onTap: () {
-                setState(() {
-                  currentIndex = 3;
                 });
               },
             )
@@ -101,3 +91,14 @@ class _BottomNavigationState extends State<BottomNavigation> {
         ));
   }
 }
+
+// BottomTabItem(
+// icon: AssetImage("images/profile_menu_ic.png"),
+// text: "Profile",
+// isSelected: currentIndex == 2,
+// onTap: () {
+// setState(() {
+// currentIndex = 2;
+// });
+// },
+// ),

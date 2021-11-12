@@ -16,6 +16,8 @@ import 'dbs/models/BeeUser.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  final authService = AuthService();
+  await authService.signInAnon();
   runApp(MyApp());
 }
 
@@ -23,29 +25,25 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return StreamProvider<BeeUser?>.value(
-        value: AuthService().user,
-        initialData: null,
-        child: MaterialApp(
-          title: 'Bee Foundation',
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            primarySwatch: Colors.yellow,
-            fontFamily: "Roboto",
-          ),
-          routes: {
-            '/': (context) => NavController(),
-            'Home': (context) => BottomNavigation(),
-            'Login': (context) => LoginScreen(),
-            'AboutUs': (context) => AboutUsScreen(),
-            'Social': (context) => SocialScreen(),
-            'Schedule': (context) => ScheduleScreen(),
-            'Journal Entry': (context) => JournalEntryScreen(),
-            'InfoOnboarding': (context) => InfoOnboarding(),
-            'QuestionsOnboarding': (context) => QuestionsOnboarding()
-          },
-          initialRoute: '/',
-        )
+    return MaterialApp(
+      title: 'Bee Foundation',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.yellow,
+        fontFamily: "Roboto",
+      ),
+      routes: {
+        '/': (context) => BottomNavigation(),
+        'Home': (context) => BottomNavigation(),
+        'Login': (context) => LoginScreen(),
+        'AboutUs': (context) => AboutUsScreen(),
+        'Social': (context) => SocialScreen(),
+        'Schedule': (context) => ScheduleScreen(),
+        'Journal Entry': (context) => JournalEntryScreen(),
+        'InfoOnboarding': (context) => InfoOnboarding(),
+        'QuestionsOnboarding': (context) => QuestionsOnboarding()
+      },
+      initialRoute: '/',
     );
   }
 }
