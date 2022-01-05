@@ -6,12 +6,23 @@ class BeeDatabase {
   FirebaseFirestore.instance.collection("dailyPrompt");
   final CollectionReference featuredEventsCollection =
   FirebaseFirestore.instance.collection("featuredEvents");
+  final CollectionReference theBuzzCollection =
+  FirebaseFirestore.instance.collection("theBuzz");
   final Stream<QuerySnapshot> featuredEventsStream = FirebaseFirestore.instance
       .collection("featuredEvents")
       .orderBy('Date')
       .snapshots();
 
 
+  //Get The Buzz QuerySnapshots
+  Future<QuerySnapshot> getTheBuzz() async{
+    return theBuzzCollection.get();
+  }
+
+  //Get FeaturedEvents QuerySnapshots
+  Future<QuerySnapshot> getFeaturedEvents() async{
+    return featuredEventsCollection.orderBy('Date').get();
+  }
   //Get dailyPrompt QuerySnapshot
   Future<DocumentSnapshot> getDailyPromptData() async {
     QuerySnapshot snapshot =
