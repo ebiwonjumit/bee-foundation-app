@@ -6,13 +6,16 @@ class ShareYourStoryCard extends StatelessWidget{
   final String? title;
   final String? image;
   final String? description;
+  final Function onTap;
+
 
   const ShareYourStoryCard(
   {Key? key,
     this.date,
     this.title,
     this.image,
-    this.description
+    this.description,
+    required this.onTap
   }): super(key: key);
 
 
@@ -69,7 +72,9 @@ class ShareYourStoryCard extends StatelessWidget{
         ),
       ),
 
-      onTap: (){},
+      onTap: (){
+        onTap();
+      },
     );
   }
 
